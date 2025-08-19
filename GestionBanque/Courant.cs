@@ -15,7 +15,6 @@ namespace GestionBanque
         private double _ligneDeCredit;
         private Personne _titulaire;
         #endregion
-
         #region Properties
         public string Numero
         {
@@ -67,21 +66,22 @@ namespace GestionBanque
             {
                 _titulaire = value;
             }
-        } 
+        }
         #endregion
+        #region Methods
         /// <summary>
         /// Permet de retirer un montant du solde du compte 
         /// en respectant la ligne de crédit
         /// </summary>
         /// <param name="MontantR">Montant positif à retirer</param>
         public void Retrait(double MontantR)
-        {   
-            if(MontantR<=0)
+        {
+            if (MontantR <= 0)
             {
                 Console.WriteLine("Le montant doit être  strictement positif");
                 return;
             }
-            if((Solde+LigneDeCredit)< MontantR)
+            if ((Solde + LigneDeCredit) < MontantR)
             {
                 Console.WriteLine("Votre solde est insuffisant");
                 return;
@@ -101,9 +101,9 @@ namespace GestionBanque
             }
             //Solde = Solde + Montant;
             Solde += MontantD;
-            
-        }
-        
+
+        } 
+        #endregion
 
     }
 }
