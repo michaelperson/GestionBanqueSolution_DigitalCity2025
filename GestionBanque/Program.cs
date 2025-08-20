@@ -55,3 +55,26 @@ Personne p1 = new Personne() { Prenom = "Shakira" };
 Personne p2 = new Personne() { Prenom = "Mike" };
 
 Personne enfant = p1 + p2;
+
+Console.WriteLine($"La fusion des deux personnes se nomme  : {enfant.Prenom}");
+
+
+Personne p3 = new Personne() { Prenom = "Mike", Nom="Thyson" };
+Personne p4 = new Personne() { Prenom = "Mike", Nom = "Thyson" };
+if (p3==p4)
+{
+    Console.WriteLine("Mes deux personnes sont identiques");
+}
+else
+{
+    Console.WriteLine("Il s'agit de deux personnes différentes");
+}
+
+if (p3.Equals(p4))
+{
+    Console.WriteLine("Mes deux personnes sont identiques");
+}
+else
+{
+    Console.WriteLine("Il s'agit de deux personnes différentes");
+}

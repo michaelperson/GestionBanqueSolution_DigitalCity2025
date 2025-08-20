@@ -49,9 +49,21 @@
             }
         #endregion
 
-         
+        public static Personne operator + (Personne p1, Personne p2)
+        {
+            string NouveauNom = p1.Prenom.Substring(0, 3) + p2.Prenom.Substring(0, 3);
+            return new Personne() { Prenom = NouveauNom };
+        }
+
+        public static bool operator == (Personne pim, Personne pam)
+        {
+            return pim.Nom == pam.Nom && pim.Prenom == pam.Prenom;
+        }
+        public static bool operator !=(Personne pim, Personne pam)
+        {
+            return pim.Nom != pam.Nom || pim.Prenom != pam.Prenom;
+        }
 
 
-    
     }
 }
