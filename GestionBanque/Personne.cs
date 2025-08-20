@@ -20,7 +20,7 @@
                 set { _nom = value; }
             }
         /// <summary>
-        /// Propriété peremttant d'obtenir la valeur du Prénom et de lui affecter une valeur
+        /// Propriété peremettant d'obtenir la valeur du Prénom et de lui affecter une valeur
         /// </summary>
         public string Prenom
             {
@@ -35,7 +35,7 @@
             {
                 get { return _dateDeNaissance; }
                 set {
-                    double NbJours = (value - DateTime.Now).TotalDays;
+                    double NbJours = ( DateTime.Now-value).TotalDays;
                     if ((NbJours/365)>=18)
                     {
                         _dateDeNaissance = value;
@@ -46,7 +46,12 @@
                     }
                     
                 }
-            } 
+            }
         #endregion
+
+         
+
+
+    
     }
 }
