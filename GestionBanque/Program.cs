@@ -78,3 +78,35 @@ else
 {
     Console.WriteLine("Il s'agit de deux personnes différentes");
 }
+
+
+//tester l'opérateur +
+
+Personne RichieRich = new Personne() { Nom = "Mak", Prenom = "Kaulkin" };
+
+
+Courant test1 = new Courant();
+test1.Numero = "123";
+test1.Depot(100);
+test1.Titulaire = RichieRich;
+Courant test2 = new Courant();
+test2.Numero = "456";
+test2.Titulaire = RichieRich;
+test2.LigneDeCredit = 5000;
+test2.Depot(100);
+test2.Retrait(400);
+
+
+double total = test1 + test2;
+Console.WriteLine($"Solde des deux comptes : {total}");
+
+
+
+voleur2.Ajouter(test1);
+voleur2.Ajouter(test2);
+
+//je vais test les avoirs
+double capital = voleur2.AvoirDesComptes(RichieRich);
+Console.WriteLine($" Notre {RichieRich.Nom} détient £{capital}");
+
+

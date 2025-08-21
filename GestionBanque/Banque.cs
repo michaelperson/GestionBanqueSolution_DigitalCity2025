@@ -31,7 +31,7 @@ namespace GestionBanque
                 return result;
                 }
             private set {
-                //_mesComptes = _mesComptes ?? new Dictionary<string, Courant>();
+                _mesComptes = _mesComptes ?? new Dictionary<string, Courant>();
                 if (value == null) {
                     Console.WriteLine("Pas de compte transmis");
                     return;
@@ -66,6 +66,38 @@ namespace GestionBanque
             {
                 _mesComptes.Remove(Numero);                 
             }
+        }
+
+
+        public double AvoirDesComptes(Personne titulaire)
+        {
+            double total = 0;
+            foreach (KeyValuePair<string, Courant> element in _mesComptes)
+            {
+                #region Version naïve
+                //Version sans utiliser le +
+                ////string numero = compte.Key; // récupération du numéro de compte dans l'élément courant
+                //Courant lecompte = element.Value;
+                //if (lecompte.Titulaire == titulaire)
+                //{
+                //    total = total + lecompte.Solde;
+                //} 
+                #endregion
+                Courant compte = element.Value;
+                Courant ghostAccount = new Courant();
+                
+                if (compte.Titulaire == titulaire)
+                {
+                    //total = total +  ( ghostAccount + compte);
+                    //( Courant      + Courant) version du + surchargé
+                    //double +  (double)
+
+                    total = total + compte;
+                }
+
+            }
+
+            return total;
         }
 
     }

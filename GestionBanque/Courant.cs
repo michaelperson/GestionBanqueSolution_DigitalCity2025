@@ -102,8 +102,27 @@ namespace GestionBanque
             //Solde = Solde + Montant;
             Solde += MontantD;
 
-        } 
+        }
         #endregion
+
+        //Surcharge de l'opérateur +
+        public static double operator +(Courant c1, Courant c2)
+        {
+            //return c1.Solde<0?0:c1.Solde+ c2.Solde<0?0:c2.Solde;
+          
+            double solde1 = 0;
+            double solde2 = 0;
+
+            if(c1.Solde>=0)  solde1=c1.Solde; //Si le compte   est positif , je prend sa valeur
+            if (c2.Solde>= 0) solde2 = c2.Solde;//Si le compte positif , je prend sa valeur
+
+            return solde1 + solde2;
+        }
+
+        public static double operator +(double c1, Courant c2)
+        {
+
+        }
 
     }
 }
