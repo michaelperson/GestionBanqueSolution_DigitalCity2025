@@ -84,15 +84,19 @@ namespace GestionBanque
                 //} 
                 #endregion
                 Courant compte = element.Value;
-                Courant ghostAccount = new Courant();
+                //Courant ghostAccount = new Courant();
                 
                 if (compte.Titulaire == titulaire)
                 {
-                    //total = total +  ( ghostAccount + compte);
-                    //( Courant      + Courant) version du + surchargé
-                    //double +  (double)
+                    //Si j'utilise la surcharge d'opérator courant + courant
+                        //total = total +  ( ghostAccount + compte);
+                        //( Courant      + Courant) version du + surchargé
+                        //double +  (double)
 
-                    total = total + compte;
+                    //Si j'utilise la surcharge d'opérator double + courant
+                        //total = total + compte;
+                    //Fonctionne car c# fait l'équivalent de total=total + compte;
+                        total += compte;
                 }
 
             }

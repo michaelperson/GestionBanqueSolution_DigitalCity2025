@@ -105,7 +105,7 @@ Console.WriteLine($"Solde des deux comptes : {total}");
 voleur2.Ajouter(test1);
 voleur2.Ajouter(test2);
 
-//je vais test les avoirs
+//je vais tester les avoirs
 double capital = voleur2.AvoirDesComptes(RichieRich);
 Console.WriteLine($" Notre {RichieRich.Nom} détient £{capital}");
 
