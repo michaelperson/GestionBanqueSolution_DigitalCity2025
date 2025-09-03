@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestionBanque
+namespace GestionBanque.Models
 {
     public class Banque
     {
@@ -23,7 +23,9 @@ namespace GestionBanque
                 _nom = value;
             }
         }
+        public List<string> NumeroComptes { get { return _mesComptes.Keys.ToList(); } }
 
+       
         public Courant? this[string numerocompte]
         {
             get {                 

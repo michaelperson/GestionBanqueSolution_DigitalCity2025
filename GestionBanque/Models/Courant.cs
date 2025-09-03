@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
-namespace GestionBanque
+namespace GestionBanque.Models
 {
     public class Courant
     {
@@ -81,7 +81,7 @@ namespace GestionBanque
                 Console.WriteLine("Le montant doit être  strictement positif");
                 return;
             }
-            if ((Solde + LigneDeCredit) < MontantR)
+            if (Solde + LigneDeCredit < MontantR)
             {
                 Console.WriteLine("Votre solde est insuffisant");
                 return;

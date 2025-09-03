@@ -19,8 +19,8 @@ namespace GestionBanque.Tools
             if (string.IsNullOrEmpty(Compte)) return false;
 
 
-            long TenFirst = long.Parse(compte.Substring(0, 10));
-            int LastTwo = int.Parse(compte.Substring(10, 2));
+            long TenFirst = long.Parse(Compte.Substring(0, 10));
+            int LastTwo = int.Parse(Compte.Substring(10, 2));
 
             int Modulo = (int)(TenFirst % 97);
 

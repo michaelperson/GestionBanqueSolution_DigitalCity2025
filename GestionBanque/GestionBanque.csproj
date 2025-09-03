@@ -7,12 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Tools\Validator.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Tools\" />
-  </ItemGroup>
-
 </Project>

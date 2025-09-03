@@ -1,4 +1,4 @@
-﻿namespace GestionBanque
+﻿namespace GestionBanque.Models
 {
     /// <summary>
     /// Classe personne de l'exercice
@@ -36,7 +36,7 @@
                 get { return _dateDeNaissance; }
                 set {
                     double NbJours = ( DateTime.Now-value).TotalDays;
-                    if ((NbJours/365)>=18)
+                    if (NbJours/365>=18)
                     {
                         _dateDeNaissance = value;
                     }else
@@ -61,6 +61,7 @@
         }
         public static bool operator !=(Personne pim, Personne pam)
         {
+            if (pam is null || pim is null) return true;
             return pim.Nom != pam.Nom || pim.Prenom != pam.Prenom;
         }
 
