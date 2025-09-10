@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestionBanque.Models
 {
-    public class Compte
+    public abstract class Compte
     {
         private string _numero;
         private double _solde;
@@ -73,5 +73,13 @@ namespace GestionBanque.Models
             Solde += MontantD;
 
         }
+        
+        public void AppliquerInteret()
+        { 
+            Solde = Solde +  CalculeInteret();
+        }
+
+        protected abstract double CalculeInteret();
+    
     }
 }

@@ -41,7 +41,7 @@ namespace GestionBanque.UI
                 Dictionary<int, Personne> clients = new Dictionary<int, Personne>();
                 for (int i = 0; i < banque.NumeroComptes.Count(); i++)
                 {
-                    Courant? c = banque[banque.NumeroComptes[i]];
+                    Compte? c = banque[banque.NumeroComptes[i]];
                     if (c!=null && c.Titulaire is not null)
                     {
                         if (!clients.ContainsKey(c.Titulaire.GetHashCode()))

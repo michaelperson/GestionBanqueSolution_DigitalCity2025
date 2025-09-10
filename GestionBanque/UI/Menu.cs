@@ -88,7 +88,7 @@ namespace GestionBanque.UI
                 int nextligne = 1;
                 for (int i = 0; i < banque.NumeroComptes.Count; i++)
                 {
-                    Courant? c = banque[banque.NumeroComptes[i]];
+                    Compte? c = banque[banque.NumeroComptes[i]];
                     if (c != null)
                     {
 
@@ -98,8 +98,11 @@ namespace GestionBanque.UI
                         movecursor(8 + nextligne);
                         Console.WriteLine($"\tSolde : {c.Solde}");
 
-                        movecursor(9 + nextligne);
-                        Console.WriteLine($"\tLigne de crédit : {c.LigneDeCredit}");
+                        if (c is Courant)
+                        {
+                            movecursor(9 + nextligne);
+                            Console.WriteLine($"\tLigne de crédit : {((Courant)c.)LigneDeCredit}");
+                        }
 
                         movecursor(10 + nextligne);
 

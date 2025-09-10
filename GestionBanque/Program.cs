@@ -112,80 +112,104 @@
 
 
 #endregion
+//using GestionBanque.Models;
+//using GestionBanque.UI;
+
+//Banque banque = new Banque() { Nom="Belfius" };
+//#region UI
+//Menu menu = new Menu();
+//BankUI bankUI = new BankUI();
+//ClientUI clientUI = new ClientUI();
+//CourantUI courantUi = new CourantUI();
+//MvtFinanciersUI mvtFinanciersUI = new MvtFinanciersUI();
+//#endregion
+//bool Exit = false;
+//do
+//{
+//    menu.Clear();
+//    menu.Header();
+//    menu.Infos(banque);
+//    int choix = menu.MainMenu();
+//    menu.Clear();
+//    switch (choix)
+//    {
+//        case 1:
+//            menu.Clear();
+//            menu.Header();
+//            banque=bankUI.createBank();
+//            Console.ForegroundColor = ConsoleColor.DarkGreen;
+//            Console.WriteLine("Opération effectuée");
+//            break;
+
+//        case 2:
+//            menu.Clear();
+//            menu.Header();
+//            if (banque == null)
+//            {
+//                Console.ForegroundColor = ConsoleColor.Red;
+//                Console.WriteLine("Vous devez créer la banque avant!");
+//                break;
+//            }
+//            courantUi.CreateAccount(banque);
+//            Console.ForegroundColor = ConsoleColor.DarkGreen;
+//            Console.WriteLine("Opération effectuée");
+//            break;
+//        case 3:
+//            menu.Clear();
+//            menu.Header();
+//            if(banque == null)
+//            {
+//                Console.ForegroundColor = ConsoleColor.Red;
+//                Console.WriteLine("Vous devez créer la banque avant!");
+//                break;
+//            }
+//            clientUI.createClient(banque);
+//            Console.ForegroundColor = ConsoleColor.DarkGreen;
+//            Console.WriteLine("Opération effectuée");
+//            break;
+//        case 4:
+//            menu.Clear();
+//            menu.Header();
+//            if (banque == null)
+//            {
+//                Console.ForegroundColor = ConsoleColor.Red;
+//                Console.WriteLine("Vous devez créer la banque avant!");
+//                break;
+//            }
+//            mvtFinanciersUI.Menu(banque);
+//            Console.ForegroundColor = ConsoleColor.DarkGreen;
+//            Console.WriteLine("Opération effectuée");
+//            break;
+
+//        case 5:break;
+//        case 6:break;
+//        default:
+//            break;
+//    } 
+//    Exit = menu.ExitMenu();
+//} while (!Exit);
+//Console.ForegroundColor = ConsoleColor.Gray;
+
 using GestionBanque.Models;
-using GestionBanque.UI;
+using GestionBanque.Models.Exceptions;
 
-Banque banque = new Banque() { Nom="Belfius" };
-#region UI
-Menu menu = new Menu();
-BankUI bankUI = new BankUI();
-ClientUI clientUI = new ClientUI();
-CourantUI courantUi = new CourantUI();
-MvtFinanciersUI mvtFinanciersUI = new MvtFinanciersUI();
-#endregion
-bool Exit = false;
-do
-{
-    menu.Clear();
-    menu.Header();
-    menu.Infos(banque);
-    int choix = menu.MainMenu();
-    menu.Clear();
-    switch (choix)
-    {
-        case 1:
-            menu.Clear();
-            menu.Header();
-            banque=bankUI.createBank();
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Opération effectuée");
-            break;
+Banque CGER = new Banque();
 
-        case 2:
-            menu.Clear();
-            menu.Header();
-            if (banque == null)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Vous devez créer la banque avant!");
-                break;
-            }
-            courantUi.CreateAccount(banque);
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Opération effectuée");
-            break;
-        case 3:
-            menu.Clear();
-            menu.Header();
-            if(banque == null)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Vous devez créer la banque avant!");
-                break;
-            }
-            clientUI.createClient(banque);
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Opération effectuée");
-            break;
-        case 4:
-            menu.Clear();
-            menu.Header();
-            if (banque == null)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Vous devez créer la banque avant!");
-                break;
-            }
-            mvtFinanciersUI.Menu(banque);
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Opération effectuée");
-            break;
-             
-        case 5:break;
-        case 6:break;
-        default:
-            break;
-    } 
-    Exit = menu.ExitMenu();
-} while (!Exit);
-Console.ForegroundColor = ConsoleColor.Gray;
+Compte MonCompte = new Courant();
+MonCompte.Numero = "4"; 
+MonCompte.Depot(100);
+Console.WriteLine(MonCompte.Solde);
+
+CGER.Ajouter(MonCompte);
+
+Compte Ecureuil = new Epargne();
+Ecureuil.Numero = "8";
+Ecureuil.Depot(100);
+Console.WriteLine(Ecureuil.Solde);
+CGER.Ajouter(Ecureuil);
+
+CGER["4"].AppliquerInteret();
+CGER["8"].AppliquerInteret();
+
+
+

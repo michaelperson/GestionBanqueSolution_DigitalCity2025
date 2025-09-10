@@ -100,7 +100,7 @@ namespace GestionBanque.UI
 
         private void Depot()
         {
-            Courant c = _banque[_numCompte];
+            Compte c = _banque[_numCompte];
             Console.WriteLine($"Votre solde actuel est de : {c.Solde}");
             Console.WriteLine("Combien voulez-vous déposer : ________");
             Console.CursorTop -= 1;
@@ -134,7 +134,7 @@ namespace GestionBanque.UI
 
         private void ChangeCreditLigne()
         {
-            Courant c = _banque[_numCompte];
+            Compte c = _banque[_numCompte];
             Console.WriteLine($"Votre ligne de crédit actuelle est de : {c.LigneDeCredit}");
             Console.WriteLine("Encodez une nouvelle valeur pour la ligne de crédit : ________");
             Console.CursorTop -= 1;

@@ -9,7 +9,7 @@ namespace GestionBanque.Models
     public class Banque
     {
         string _nom;
-        Dictionary<string, Courant> _mesComptes = new Dictionary<string, Courant>();
+        Dictionary<string, Compte> _mesComptes = new Dictionary<string, Compte>();
 
         public string Nom
         {
@@ -26,14 +26,14 @@ namespace GestionBanque.Models
         public List<string> NumeroComptes { get { return _mesComptes.Keys.ToList(); } }
 
        
-        public Courant? this[string numerocompte]
+        public Compte? this[string numerocompte]
         {
             get {                 
-                _mesComptes.TryGetValue(numerocompte, out Courant? result);
+                _mesComptes.TryGetValue(numerocompte, out Compte? result);
                 return result;
                 }
             private set {
-                _mesComptes = _mesComptes ?? new Dictionary<string, Courant>();
+                _mesComptes = _mesComptes ?? new Dictionary<string, Compte>();
                 if (value == null) {
                     Console.WriteLine("Pas de compte transmis");
                     return;
@@ -55,7 +55,7 @@ namespace GestionBanque.Models
             }
         }
 
-        public void Ajouter(Courant compte)
+        public void Ajouter(Compte compte)
         {             
             this[compte.Numero] = compte;
         }
@@ -74,7 +74,7 @@ namespace GestionBanque.Models
         public double AvoirDesComptes(Personne titulaire)
         {
             double total = 0;
-            foreach (KeyValuePair<string, Courant> element in _mesComptes)
+            foreach (KeyValuePair<string, Compte> element in _mesComptes)
             {
                 #region Version naïve
                 //Version sans utiliser le +
@@ -85,20 +85,22 @@ namespace GestionBanque.Models
                 //    total = total + lecompte.Solde;
                 //} 
                 #endregion
-                Courant compte = element.Value;
+                Compte compte = element.Value;
                 //Courant ghostAccount = new Courant();
                 
                 if (compte.Titulaire == titulaire)
                 {
                     //Si j'utilise la surcharge d'opérator courant + courant
-                        //total = total +  ( ghostAccount + compte);
-                        //( Courant      + Courant) version du + surchargé
-                        //double +  (double)
+                    //total = total +  ( ghostAccount + compte);
+                    //( Courant      + Courant) version du + surchargé
+                    //double +  (double)
 
                     //Si j'utilise la surcharge d'opérator double + courant
-                        //total = total + compte;
+                    //total = total + compte;
                     //Fonctionne car c# fait l'équivalent de total=total + compte;
-                        total += compte;
+                    //                        total += compte;
+                    //#paresseux
+                    total += compte.Solde;
                 }
 
             }

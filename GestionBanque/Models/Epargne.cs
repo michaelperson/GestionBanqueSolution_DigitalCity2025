@@ -28,8 +28,17 @@ namespace GestionBanque.Models
         #region Methods
         public override void Retrait(double MontantR)
         {
-            DateDernierRetrait = DateTime.Now;
+            if (Solde - MontantR < 0) { Console.WriteLine("Tu ne peux pas retirer autant de frix su le compte. Tips: Call ousmane!");
+                return;
+            }
+          
             base.Retrait(MontantR);
+            DateDernierRetrait = DateTime.Now;
+        }
+
+        protected override double CalculeInteret()
+        {
+            return Solde * 0.045;
         }
         #endregion
     }

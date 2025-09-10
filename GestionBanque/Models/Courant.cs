@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionBanque.Models.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace GestionBanque.Models
         #endregion
         #region Properties
        
-        public double LigneDeCredit
+        public virtual double LigneDeCredit
         {
             get
             {
@@ -31,7 +32,16 @@ namespace GestionBanque.Models
                 }
                 else
                 {
-                    Console.WriteLine("Ligne de crédit doit être positive");
+                    try
+                    {
+                        throw new NegativeCreditNotAllowedException("La ligne de crédit doit être positive");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Erreur");
+                        throw ex;
+                    }
+                   
                 }
             }
         }
@@ -46,8 +56,13 @@ namespace GestionBanque.Models
                 Console.WriteLine("Votre solde est insuffisant");
                 return;
             }
-            //Solde -= MontantR;
+            
             base.Retrait(MontantR);
+        }
+
+        protected override double CalculeInteret()
+        {
+            return Solde < 0 ? Solde*0.0975 : Solde*0.03;
         }
 
         #region Surcharge de l'opérateur +
@@ -74,14 +89,13 @@ namespace GestionBanque.Models
         /// </example>
         public static double operator +(Courant c1, Courant c2)
         {
-            //return (c1.Solde<0?0:c1.Solde)+ (c2.Solde<0?0:c2.Solde);
-
+             
             double solde1 = 0;
             double solde2 = 0;
 
             if (c1.Solde >= 0) solde1 = c1.Solde; //Si le compte   est positif , je prend sa valeur
             if (c2.Solde >= 0) solde2 = c2.Solde;//Si le compte positif , je prend sa valeur
-
+          
             return solde1 + solde2;
         }
         /// <summary>
