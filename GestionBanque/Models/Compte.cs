@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionBanque.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GestionBanque.Models
 {
-    public abstract class Compte
+    public abstract class Compte:ICustomer, IBanker
     {
         private string _numero;
         private double _solde;
@@ -41,6 +42,19 @@ namespace GestionBanque.Models
             set
             {
                 _titulaire = value;
+            }
+        }
+
+        public virtual double LigneDeCredit
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
             }
         }
 

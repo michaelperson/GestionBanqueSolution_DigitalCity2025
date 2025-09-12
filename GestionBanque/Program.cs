@@ -190,12 +190,13 @@
 //} while (!Exit);
 //Console.ForegroundColor = ConsoleColor.Gray;
 
+using GestionBanque.Interfaces;
 using GestionBanque.Models;
 using GestionBanque.Models.Exceptions;
 
 Banque CGER = new Banque();
 
-Compte MonCompte = new Courant();
+Courant MonCompte = new Courant();
 MonCompte.Numero = "4"; 
 MonCompte.Depot(100);
 Console.WriteLine(MonCompte.Solde);
@@ -211,5 +212,23 @@ CGER.Ajouter(Ecureuil);
 CGER["4"].AppliquerInteret();
 CGER["8"].AppliquerInteret();
 
+AfficheInfo(MonCompte);
+AfficheInfo(Ecureuil); 
+UtiliseCompteCommeUnBanquier(MonCompte);
+UtiliseCompteCommeUnBanquier(Ecureuil);
 
+static void AfficheInfo(ICustomer customerAccount)
+{
+    Console.WriteLine($"Solde : {customerAccount.Solde}");
+     
+}
+
+static void UtiliseCompteCommeUnBanquier(IBanker banker)
+{
+    banker.AppliquerInteret();
+    Console.WriteLine($"Solde : {banker.Solde}");
+    Console.WriteLine($"Titulaire : {banker.Titulaire.Nom}");
+    Console.WriteLine($"Num : {banker.Numero}");
+
+}
 

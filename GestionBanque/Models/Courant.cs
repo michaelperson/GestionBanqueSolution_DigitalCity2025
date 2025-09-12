@@ -1,4 +1,5 @@
-﻿using GestionBanque.Models.Exceptions;
+﻿using GestionBanque.Interfaces;
+using GestionBanque.Models.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace GestionBanque.Models
         #endregion
         #region Properties
        
-        public virtual double LigneDeCredit
+        public override double LigneDeCredit
         {
             get
             {
